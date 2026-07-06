@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($env:PORT=3000; Start-Process -FilePath \"npm\" -ArgumentList \"run\",\"start\" -WindowStyle Hidden; Start-Sleep -Seconds 6; Write-Output \"server started\")",
+      "PowerShell(npm run *)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:3000/\" -UseBasicParsing -TimeoutSec 20; Write-Output \\(\"Inicio -> HTTP \" + $r.StatusCode\\) } catch { Write-Output \\(\"ERROR: \" + $_.Exception.Message\\) })"
+    ]
+  }
+}

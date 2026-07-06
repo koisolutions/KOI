@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-space: "Space Grotesk", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-slate-200 antialiased;
+    position: relative;
+    background-color: #090c12;
+    /* Malla de degradados armónica y balanceada */
+    background-image:
+      radial-gradient(55rem 55rem at 12% -8%, rgba(255, 106, 61, 0.09), transparent 58%),
+      radial-gradient(55rem 55rem at 88% 6%, rgba(45, 212, 191, 0.06), transparent 58%),
+      radial-gradient(60rem 60rem at 50% 108%, rgba(255, 106, 61, 0.06), transparent 60%),
+      linear-gradient(180deg, #0b0f17 0%, #0a0e15 45%, #080b11 100%);
+    background-attachment: fixed;
+  }
+
+  /* Textura de puntos muy sutil para dar profundidad al fondo */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 40%, transparent 100%);
+  }
+
+  ::selection {
+    @apply bg-koi/30 text-white;
+  }
+
+  /* Scrollbar sutil */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0e14;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1d2b3c;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a3c52;
+  }
+}
+
+@layer components {
+  .container-koi {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* Texto con degradado koi */
+  .text-gradient {
+    @apply bg-gradient-to-r from-koi-light via-koi to-koi-deep bg-clip-text text-transparent;
+  }
+
+  /* Etiqueta / eyebrow */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-slate-300;
+  }
+
+  /* Botón primario koi */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-koi to-koi-deep px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-koi/25 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-koi/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-koi focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
+  }
+
+  /* Botón secundario (borde) */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-water/40 bg-water/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:border-water/60 hover:bg-water/20;
+  }
+
+  /* Tarjeta base con brillo al pasar el mouse */
+  .card {
+    @apply relative overflow-hidden rounded-2xl bg-ink-700/60 p-6 backdrop-blur;
+  }
+  .card::before {
+    content: "";
+    @apply pointer-events-none absolute -inset-px rounded-2xl border border-transparent transition-all duration-300;
+  }
+  .card:hover::before {
+    @apply border-koi/50;
+  }
+}
+
+/* Documento legal */
+.legal-prose {
+  @apply text-slate-300;
+}
+.legal-prose h2 {
+  @apply mt-10 mb-3 font-display text-xl font-semibold text-white;
+}
+.legal-prose h3 {
+  @apply mt-6 mb-2 text-base font-semibold text-white;
+}
+.legal-prose p {
+  @apply mb-4 leading-relaxed;
+}
+.legal-prose ul {
+  @apply mb-4 ml-5 list-disc space-y-2;
+}
+.legal-prose a {
+  @apply text-koi-light underline underline-offset-2 hover:text-koi;
+}
+.legal-prose strong {
+  @apply text-white;
+}
+
+/* Mejora para los enlaces en contenido de texto largo (artículos, legal) */
+@layer base {
+  article a {
+    @apply text-koi-light underline decoration-koi/50 underline-offset-2 transition hover:text-koi hover:decoration-koi;
+  }
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variantes para la sección de Proceso */
+.reveal-from-left {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.reveal-from-right {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-float,
+  .animate-blob,
+  .animate-shimmer {
+    animation: none !important;
+  }
+}
