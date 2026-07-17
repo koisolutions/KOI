@@ -1,22 +1,39 @@
 // =====================================================================
-//  CONFIGURACIÓN DE LA EMPRESA  —  edita SOLO este archivo
+//  CONFIGURACIÓN DE KOI  —  edita SOLO este archivo
 //  para cambiar datos de contacto, textos y enlaces de la landing.
 // =====================================================================
 
 export const site = {
-  name: "Koi Labs Solutions",
+  name: "KOI",
   legalName: "Koi Labs Solutions SpA",
-  tagline: "Software que impulsa tu negocio",
+  domain: "koi.cl",
+  tagline: "El software que tu negocio no encuentra de fábrica",
   description:
-    "Desarrollamos software a medida, páginas web y aplicaciones móviles para empresas que quieren crecer. Tecnología confiable, diseño moderno y soporte cercano.",
+    "KOI es un estudio de software boutique en Chile. Diseñamos y construimos sistemas internos, portales de cliente, automatizaciones y plataformas web escalables — con un proceso pautado y transparente, y un stack técnico real.",
 
   // ---- CONTACTO (⚠️ REEMPLAZA ESTOS DATOS) ------------------------
   // WhatsApp en formato internacional SIN "+", espacios ni guiones.
   // Ejemplo Chile: 56912345678  (56 = país, 9 = móvil, luego el número)
   whatsapp: "56912345678",
-  email: "contacto@koilabs.cl",
+  email: "hola@koi.cl",
   phoneDisplay: "+56 9 1234 5678",
-  location: "Santiago, Chile",
+  location: "Chile · 100% remoto",
+
+  // ---- FUNDADORES -------------------------------------------------
+  founders: [
+    {
+      name: "Joaquín",
+      role: "Comercial & Cliente",
+      focus:
+        "El puente con tu negocio: entiende el problema, define el alcance y mantiene la relación clara de principio a fin.",
+    },
+    {
+      name: "Juan Pablo",
+      role: "Arquitectura & Desarrollo",
+      focus:
+        "Diseña la arquitectura y escribe el código: sistemas mantenibles, seguros y pensados para escalar sin sustos.",
+    },
+  ],
 
   // ---- REDES (opcional, deja "" para ocultar) ---------------------
   social: {
@@ -27,7 +44,7 @@ export const site = {
 
   // ---- MENSAJE PRELLENADO DE WHATSAPP -----------------------------
   whatsappMessage:
-    "¡Hola Koi Labs! Vengo desde su sitio web y me gustaría conversar sobre un proyecto.",
+    "Hola KOI, vengo desde koi.cl y me gustaría conversar sobre un proyecto.",
 } as const;
 
 // URL de WhatsApp lista para usar (no editar).

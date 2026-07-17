@@ -3,9 +3,10 @@ import { site } from "@/lib/site";
 
 const nav = [
   { href: "/#servicios", label: "Servicios" },
-  { href: "/#nosotros", label: "Nosotros" },
   { href: "/#proceso", label: "Proceso" },
+  { href: "/#estudio", label: "Estudio" },
   { href: "/#contacto", label: "Contacto" },
+  { href: "/acceso", label: "Acceso clientes" },
 ];
 
 const legal = [
@@ -16,20 +17,20 @@ const legal = [
 export default function Footer() {
   const year = 2026;
   return (
-    <footer className="border-t border-white/10 bg-ink-800/60">
+    <footer className="border-t border-hair/10 bg-sumi-900">
       <div className="container-koi py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="max-w-sm md:col-span-1">
             <Logo />
-            <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              Nos gusta escuchar antes de programar. Acompañamos a personas y
-              empresas a convertir sus ideas en software, con cercanía y
-              compromiso de principio a fin.
+            <p className="mt-5 text-sm leading-relaxed text-junco">
+              Estudio de software boutique en Chile. Sistemas a medida con
+              proceso claro y stack real — escuchamos antes de programar.
             </p>
+            <p className="mt-4 font-mono text-xs text-junco/70">{site.domain}</p>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-white">
+            <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-niebla">
               Navegación
             </h4>
             <ul className="mt-4 space-y-2.5">
@@ -37,7 +38,7 @@ export default function Footer() {
                 <li key={n.href}>
                   <a
                     href={n.href}
-                    className="text-sm text-slate-400 transition-colors hover:text-koi-light"
+                    className="text-sm text-junco transition-colors hover:text-niebla"
                   >
                     {n.label}
                   </a>
@@ -47,14 +48,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-white">
+            <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-niebla">
               Contacto
             </h4>
-            <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
+            <ul className="mt-4 space-y-2.5 text-sm text-junco">
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="transition-colors hover:text-koi-light"
+                  className="transition-colors hover:text-niebla"
                 >
                   {site.email}
                 </a>
@@ -64,7 +65,7 @@ export default function Footer() {
                   href={`https://wa.me/${site.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-koi-light"
+                  className="transition-colors hover:text-niebla"
                 >
                   {site.phoneDisplay}
                 </a>
@@ -74,7 +75,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-white">
+            <h4 className="font-mono text-xs font-semibold uppercase tracking-widest text-niebla">
               Legal
             </h4>
             <ul className="mt-4 space-y-2.5">
@@ -82,7 +83,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="text-sm text-slate-400 transition-colors hover:text-koi-light"
+                    className="text-sm text-junco transition-colors hover:text-niebla"
                   >
                     {l.label}
                   </a>
@@ -92,12 +93,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
-          <p className="text-xs text-slate-500">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-hair/10 pt-6 sm:flex-row">
+          <p className="text-xs text-junco/80">
             © {year} {site.legalName}. Todos los derechos reservados.
           </p>
-          <p className="text-xs text-slate-500">
-            Hecho con dedicación en Chile 🇨🇱
+          <p className="font-mono text-xs text-junco/70">
+            Hecho en Chile · 100% remoto
           </p>
         </div>
       </div>

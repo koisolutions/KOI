@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Reveal from "./Reveal";
-import { WhatsAppIcon, MailIcon, PhoneIcon, PinIcon, ArrowIcon } from "./icons";
+import { WhatsAppIcon, MailIcon, PinIcon, ArrowIcon } from "./icons";
 import { site } from "@/lib/site";
 
 export default function Contact() {
@@ -11,7 +11,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text =
-      `Hola Koi Labs 👋%0A%0A` +
+      `Hola KOI 👋%0A%0A` +
       `*Nombre:* ${form.name}%0A` +
       `*Contacto:* ${form.contact}%0A` +
       `*Proyecto:* ${form.message}`;
@@ -37,35 +37,31 @@ export default function Contact() {
       href: `mailto:${site.email}`,
     },
     {
-      icon: PhoneIcon,
-      label: "Teléfono",
-      value: site.phoneDisplay,
-      href: `tel:+${site.whatsapp}`,
-    },
-    {
       icon: PinIcon,
-      label: "Ubicación",
+      label: "Dónde estamos",
       value: site.location,
       href: null,
     },
   ];
 
+  const inputClass =
+    "w-full rounded-xl border border-vidrio/60 bg-sumi-900/60 px-4 py-3 text-niebla placeholder:text-junco/60 transition-colors focus:border-indigo focus:outline-none";
+
   return (
     <section id="contacto" className="py-20 sm:py-28">
       <div className="container-koi">
-        <div className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-ink-700/80 to-ink-800/80">
+        <div className="overflow-hidden rounded-3xl border border-hair/10 bg-laguna/30">
           <div className="grid lg:grid-cols-2">
-            {/* Lado izquierdo: info */}
-            <div className="relative p-8 sm:p-12">
-              <div className="pointer-events-none absolute -left-20 top-0 h-60 w-60 rounded-full bg-koi/15 blur-3xl" />
+            {/* Info */}
+            <div className="p-8 sm:p-12">
               <Reveal>
-                <span className="eyebrow">Hablemos</span>
-                <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                <p className="section-label">Conversemos</p>
+                <h2 className="mt-5 font-display text-3xl font-semibold tracking-tight text-niebla sm:text-4xl">
                   ¿Tienes un proyecto en mente?
                 </h2>
-                <p className="mt-4 text-lg text-slate-300">
-                  Cuéntanos qué necesitas y te respondemos con una propuesta clara.
-                  La primera conversación siempre es gratis.
+                <p className="mt-4 text-lg leading-relaxed text-junco">
+                  Cuéntanos qué necesitas y te respondemos con una propuesta
+                  clara. La primera conversación es sin costo y sin compromiso.
                 </p>
               </Reveal>
 
@@ -73,15 +69,15 @@ export default function Contact() {
                 {contactCards.map((c) => {
                   const Icon = c.icon;
                   const inner = (
-                    <div className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 transition-colors hover:border-koi/40">
-                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-koi/15 text-koi-light">
+                    <div className="flex items-center gap-4 rounded-xl border border-hair/10 bg-sumi/40 p-4 transition-colors hover:border-vidrio">
+                      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-vidrio/60 text-indigo-light">
                         <Icon className="h-5 w-5" />
                       </span>
                       <div>
-                        <div className="text-xs uppercase tracking-wider text-slate-400">
+                        <div className="font-mono text-xs uppercase tracking-wider text-junco">
                           {c.label}
                         </div>
-                        <div className="text-sm font-medium text-white">
+                        <div className="text-sm font-medium text-niebla">
                           {c.value}
                         </div>
                       </div>
@@ -104,14 +100,14 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Lado derecho: formulario */}
-            <div className="border-t border-white/10 bg-ink-800/40 p-8 sm:p-12 lg:border-l lg:border-t-0">
+            {/* Formulario */}
+            <div className="border-t border-hair/10 bg-sumi-900/40 p-8 sm:p-12 lg:border-l lg:border-t-0">
               <Reveal delay={100}>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <label
                       htmlFor="name"
-                      className="mb-2 block text-sm font-medium text-slate-300"
+                      className="mb-2 block text-sm font-medium text-junco"
                     >
                       Tu nombre
                     </label>
@@ -122,14 +118,14 @@ export default function Contact() {
                       value={form.name}
                       onChange={update("name")}
                       placeholder="Ej: Juan Pérez"
-                      className="w-full rounded-xl border border-white/10 bg-ink/60 px-4 py-3 text-white placeholder:text-slate-500 focus:border-koi focus:outline-none focus:ring-1 focus:ring-koi"
+                      className={inputClass}
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="contact"
-                      className="mb-2 block text-sm font-medium text-slate-300"
+                      className="mb-2 block text-sm font-medium text-junco"
                     >
                       Correo o teléfono
                     </label>
@@ -140,14 +136,14 @@ export default function Contact() {
                       value={form.contact}
                       onChange={update("contact")}
                       placeholder="tucorreo@ejemplo.com"
-                      className="w-full rounded-xl border border-white/10 bg-ink/60 px-4 py-3 text-white placeholder:text-slate-500 focus:border-koi focus:outline-none focus:ring-1 focus:ring-koi"
+                      className={inputClass}
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="message"
-                      className="mb-2 block text-sm font-medium text-slate-300"
+                      className="mb-2 block text-sm font-medium text-junco"
                     >
                       Cuéntanos sobre tu proyecto
                     </label>
@@ -157,8 +153,8 @@ export default function Contact() {
                       rows={4}
                       value={form.message}
                       onChange={update("message")}
-                      placeholder="Necesito una página web / app para..."
-                      className="w-full resize-none rounded-xl border border-white/10 bg-ink/60 px-4 py-3 text-white placeholder:text-slate-500 focus:border-koi focus:outline-none focus:ring-1 focus:ring-koi"
+                      placeholder="Necesito un sistema / portal / automatización para..."
+                      className={`${inputClass} resize-none`}
                     />
                   </div>
 
@@ -166,7 +162,7 @@ export default function Contact() {
                     Enviar por WhatsApp
                     <ArrowIcon className="h-4 w-4" />
                   </button>
-                  <p className="text-center text-xs text-slate-500">
+                  <p className="text-center text-xs text-junco/80">
                     Al enviar, se abrirá WhatsApp con tu mensaje listo para
                     despacharlo.
                   </p>

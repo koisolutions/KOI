@@ -1,37 +1,49 @@
 import Reveal from "./Reveal";
 import {
+  ShieldIcon,
   SearchIcon,
+  MailIcon,
+  WebIcon,
   DesignIcon,
-  DevIcon,
-  DeployIcon,
-  SupportIcon,
+  PhoneIcon,
+  CodeIcon,
 } from "./icons";
 
-const processSteps = [
+const steps = [
+  {
+    icon: ShieldIcon,
+    title: "Contrato claro",
+    text: "Antes de todo, un acuerdo transparente: alcance, plazos y condiciones por escrito. Sabes exactamente qué esperar.",
+  },
   {
     icon: SearchIcon,
-    title: "1. Descubrimiento y Estrategia",
-    text: "Nos sumergimos en tu negocio para entender tus objetivos. Definimos el alcance, la tecnología y la hoja de ruta del proyecto para asegurar que la solución final cumpla y supere tus expectativas.",
+    title: "Formulario de preguntas",
+    text: "Un cuestionario pautado para entender tu negocio, tus objetivos y las restricciones reales de tu operación.",
+  },
+  {
+    icon: MailIcon,
+    title: "Welcome doc",
+    text: "Recibes un documento de bienvenida con todo lo acordado, los próximos pasos y cómo será trabajar juntos.",
+  },
+  {
+    icon: WebIcon,
+    title: "Portal de cliente",
+    text: "Te damos acceso a nuestro portal propio: avances, documentos y estado del proyecto siempre a la vista.",
   },
   {
     icon: DesignIcon,
-    title: "2. Diseño UX/UI y Prototipado",
-    text: "Creamos una experiencia de usuario intuitiva y un diseño visual atractivo. A través de prototipos interactivos, validamos el flujo y la funcionalidad antes de escribir una sola línea de código.",
+    title: "Estrategia documentada",
+    text: "Escribimos la estrategia técnica y de producto antes de programar. La arquitectura queda decidida y justificada.",
   },
   {
-    icon: DevIcon,
-    title: "3. Desarrollo Ágil",
-    text: "Construimos tu software en ciclos cortos (sprints), lo que te permite ver el progreso de forma continua y hacer ajustes sobre la marcha. Calidad, eficiencia y comunicación son nuestros pilares.",
+    icon: PhoneIcon,
+    title: "Llamada estratégica",
+    text: "Revisamos juntos el plan, resolvemos dudas y confirmamos el rumbo antes de escribir la primera línea de código.",
   },
   {
-    icon: DeployIcon,
-    title: "4. Despliegue y Lanzamiento",
-    text: "Preparamos la infraestructura en la nube, automatizamos el despliegue y realizamos pruebas exhaustivas para garantizar un lanzamiento exitoso, seguro y sin contratiempos.",
-  },
-  {
-    icon: SupportIcon,
-    title: "5. Soporte y Evolución",
-    text: "Tu proyecto sigue vivo después del lanzamiento. Ofrecemos planes de mantenimiento, soporte continuo y desarrollo de nuevas funcionalidades para que tu software crezca contigo.",
+    icon: CodeIcon,
+    title: "Desarrollo",
+    text: "Construimos en ciclos con avances visibles en el portal. Comunicación directa con quien programa, sin intermediarios.",
   },
 ];
 
@@ -39,67 +51,62 @@ export default function Process() {
   return (
     <section id="proceso" className="py-20 sm:py-28">
       <div className="container-koi">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="max-w-2xl">
           <Reveal>
-            <span className="eyebrow">Nuestro Método</span>
+            <p className="section-label">Cómo trabajamos</p>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Un camino claro hacia el éxito de tu proyecto
+            <h2 className="mt-5 font-display text-3xl font-semibold tracking-tight text-niebla sm:text-4xl">
+              Un proceso pautado, de principio a fin.
             </h2>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-4 text-lg text-slate-300">
-              Seguimos un proceso probado que garantiza resultados de alta
-              calidad, entregados a tiempo y dentro del presupuesto.
+            <p className="mt-4 text-lg leading-relaxed text-junco">
+              La confianza no se promete, se demuestra en el método. Así avanza
+              cada proyecto con KOI:
             </p>
           </Reveal>
         </div>
 
-        {/* Timeline */}
-        <div className="relative mt-20">
-          {/* La línea de conexión */}
+        {/* Corriente: línea vertical que atraviesa los pasos */}
+        <div className="relative mt-16 pl-10 sm:pl-14">
           <div
-            className="absolute left-1/2 top-2 hidden h-full w-px -translate-x-1/2 bg-white/10 lg:block"
+            className="absolute left-[13px] top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-koi/50 via-vidrio to-transparent sm:left-[21px]"
             aria-hidden="true"
           />
 
-          <div className="grid gap-y-12 lg:grid-cols-1 lg:gap-y-20">
-            {processSteps.map((step, i) => (
-              <div
-                key={step.title}
-                className="relative lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-x-8"
-              >
-                {/* Tarjeta de contenido (izquierda o derecha) */}
-                <article
-                  className={`card group lg:col-start-${
-                    i % 2 === 0 ? 1 : 3
-                  } lg:row-start-1`}
-                >
-                  <Reveal
-                    className={`h-full ${
-                      i % 2 === 0 ? "reveal-from-left" : "reveal-from-right"
-                    }`}
+          <ol className="space-y-10">
+            {steps.map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <li key={step.title} className="relative">
+                  {/* Nodo en la corriente */}
+                  <span
+                    className="absolute -left-10 top-0 flex h-7 w-7 items-center justify-center rounded-full border border-vidrio bg-sumi sm:-left-14 sm:h-11 sm:w-11"
+                    aria-hidden="true"
                   >
-                    <div className={`p-6 ${i % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
-                      <h3 className="font-display text-lg font-semibold text-koi-light">
-                        {step.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                    <Icon className="h-4 w-4 text-indigo-light sm:h-5 sm:w-5" />
+                  </span>
+
+                  <Reveal delay={(i % 3) * 60}>
+                    <div className="panel p-6">
+                      <div className="flex items-baseline gap-3">
+                        <span className="font-mono text-xs text-koi">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className="font-display text-lg font-semibold text-niebla">
+                          {step.title}
+                        </h3>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-junco">
                         {step.text}
                       </p>
                     </div>
                   </Reveal>
-                </article>
-
-                {/* El ÍCONO en la línea de tiempo */}
-                <div className="relative flex items-center justify-center lg:col-start-2 lg:row-start-1">
-                  <div className="absolute -top-12 h-20 w-px bg-white/10 lg:hidden" />
-                  <div className="z-10 flex h-14 w-14 items-center justify-center rounded-full bg-ink-600 text-koi-light ring-2 ring-koi/50 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110"><step.icon className="h-7 w-7" /></div>
-                </div> 
-              </div>
-            ))}
-          </div>
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </div>
     </section>

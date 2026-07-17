@@ -1,43 +1,49 @@
 import Reveal from "./Reveal";
 import {
+  CodeIcon,
   WebIcon,
   MobileIcon,
-  CodeIcon,
+  DashboardIcon,
   PlugIcon,
   CloudIcon,
-  ShieldIcon,
 } from "./icons";
 
 const services = [
   {
-    icon: WebIcon,
-    title: "Páginas y aplicaciones web",
-    text: "Sitios corporativos, landing pages y plataformas web rápidas, responsivas y optimizadas para convertir visitas en clientes.",
+    n: "01",
+    icon: CodeIcon,
+    title: "Sistemas internos",
+    text: "Herramientas de gestión hechas a la medida de tu operación: inventario, agendamiento, fichas, reportería. Software que se adapta a tu proceso, no al revés.",
   },
   {
+    n: "02",
+    icon: WebIcon,
+    title: "Páginas y sitios web",
+    text: "Sitios corporativos, landings y catálogos rápidos, modernos y optimizados para buscadores — pensados para convertir visitas en clientes.",
+  },
+  {
+    n: "03",
     icon: MobileIcon,
     title: "Aplicaciones móviles",
-    text: "Apps para Android e iOS con experiencias fluidas. Desde la idea hasta la publicación en las tiendas.",
+    text: "Apps para Android e iOS con experiencias fluidas, desde la idea hasta la publicación en las tiendas.",
   },
   {
-    icon: CodeIcon,
-    title: "Software a medida",
-    text: "Sistemas de gestión, automatización de procesos y herramientas internas diseñadas exactamente para tu operación.",
+    n: "04",
+    icon: DashboardIcon,
+    title: "Portales de cliente",
+    text: "Espacios privados donde tus clientes ven su información, documentos y avances en tiempo real. Menos correos, menos llamadas, más confianza.",
   },
   {
+    n: "05",
     icon: PlugIcon,
-    title: "APIs e integraciones",
-    text: "Conectamos tus sistemas con pasarelas de pago, ERPs, CRMs y servicios externos para que todo trabaje en conjunto.",
+    title: "Automatizaciones e integraciones",
+    text: "Conectamos tus sistemas y eliminamos el trabajo manual repetitivo: pasarelas de pago, ERPs, CRMs y servicios externos que trabajan solos.",
   },
   {
+    n: "06",
     icon: CloudIcon,
-    title: "Cloud y despliegue",
-    text: "Infraestructura escalable en la nube, despliegues automatizados y monitoreo para que tu producto esté siempre disponible.",
-  },
-  {
-    icon: ShieldIcon,
-    title: "Mantención y soporte",
-    text: "Acompañamiento continuo, mejoras, seguridad y respaldos. No te dejamos solo después del lanzamiento.",
+    title: "Plataformas web escalables",
+    text: "Productos web que soportan crecimiento real: arquitectura pensada para escalar, desplegada en infraestructura cloud y monitoreada.",
   },
 ];
 
@@ -45,36 +51,35 @@ export default function Services() {
   return (
     <section id="servicios" className="py-20 sm:py-28">
       <div className="container-koi">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="max-w-2xl">
           <Reveal>
-            <span className="eyebrow">Qué hacemos</span>
+            <p className="section-label">Qué construye KOI</p>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Soluciones de software de punta a punta
+            <h2 className="mt-5 font-display text-3xl font-semibold tracking-tight text-niebla sm:text-4xl">
+              No vendemos plantillas. Construimos lo que tu operación necesita.
             </h2>
-          </Reveal>
-          <Reveal delay={160}>
-            <p className="mt-4 text-lg text-slate-300">
-              Todo lo que tu proyecto digital necesita, con un solo equipo
-              responsable.
-            </p>
           </Reveal>
         </div>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-hair/10 bg-hair/10 sm:grid-cols-2">
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
-              <Reveal key={s.title} delay={(i % 3) * 100} className="h-full">
-                <article className="card group h-full p-6">
-                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-koi/20 to-koi-deep/10 text-koi-light ring-1 ring-koi/20 transition-transform duration-300 group-hover:scale-110">
-                    <Icon className="h-6 w-6" />
+              <Reveal key={s.title} delay={(i % 2) * 100}>
+                <article className="group h-full bg-sumi p-8 transition-colors duration-300 hover:bg-laguna/40">
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-vidrio/60 text-indigo-light transition-colors duration-300 group-hover:border-koi/50 group-hover:text-koi">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="font-mono text-xs tracking-widest text-junco/60">
+                      {s.n}
+                    </span>
                   </div>
-                  <h3 className="font-display text-lg font-semibold text-white">
+                  <h3 className="mt-6 font-display text-xl font-semibold text-niebla">
                     {s.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  <p className="mt-3 text-sm leading-relaxed text-junco">
                     {s.text}
                   </p>
                 </article>

@@ -116,7 +116,7 @@ export default function PoliticaPrivacidad() {
         en esta página, indicando la fecha de última actualización.
       </p>
 
-      <p className="mt-10 rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-slate-400">
+      <p className="mt-10 rounded-xl border border-hair/10 bg-veil/[0.05] p-4 text-sm text-junco">
         <strong>Nota:</strong> este documento es una plantilla informativa. Te
         recomendamos revisarla con un abogado para adaptarla a la realidad
         específica de tu empresa antes de publicarla.

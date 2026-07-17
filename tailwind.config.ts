@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: ["selector", '[data-theme="dark"]'],
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -9,50 +10,49 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Fondo profundo con matiz "agua"
-        ink: {
-          DEFAULT: "#0a0e14",
-          800: "#0d1219",
-          700: "#111823",
-          600: "#16202e",
-          500: "#1d2b3c",
+        // ---- Paleta "Sumi & Marea" (temática vía CSS vars) --------------
+        // Los tokens cambian entre claro/oscuro por su rol semántico:
+        // sumi = fondo · laguna = superficie · vidrio = borde
+        // niebla = texto · junco = texto atenuado
+        sumi: {
+          DEFAULT: "rgb(var(--bg) / <alpha-value>)",
+          900: "rgb(var(--bg-900) / <alpha-value>)",
+          800: "rgb(var(--bg-800) / <alpha-value>)",
         },
-        // Acento koi (naranja-coral)
+        laguna: {
+          DEFAULT: "rgb(var(--surface) / <alpha-value>)",
+          700: "rgb(var(--surface-700) / <alpha-value>)",
+        },
+        vidrio: "rgb(var(--line) / <alpha-value>)",
+        indigo: {
+          DEFAULT: "rgb(var(--indigo) / <alpha-value>)",
+          light: "rgb(var(--indigo-light) / <alpha-value>)",
+        },
         koi: {
-          DEFAULT: "#ff6a3d",
-          light: "#ff8a5c",
-          deep: "#f0492b",
+          DEFAULT: "rgb(var(--koi) / <alpha-value>)",
+          light: "rgb(var(--koi-light) / <alpha-value>)",
+          deep: "rgb(var(--koi-deep) / <alpha-value>)",
         },
-        // Agua / secundario
-        water: {
-          DEFAULT: "#2dd4bf",
-          deep: "#0f766e",
-        },
+        water: "rgb(var(--water) / <alpha-value>)",
+        niebla: "rgb(var(--text) / <alpha-value>)",
+        junco: "rgb(var(--muted) / <alpha-value>)",
+        // Superposiciones temáticas (reemplazan a white/x)
+        hair: "rgb(var(--hair) / <alpha-value>)",
+        veil: "rgb(var(--veil) / <alpha-value>)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-space)", "var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-hanken)", "system-ui", "sans-serif"],
+        display: ["var(--font-fraunces)", "Georgia", "serif"],
+        mono: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
       },
       keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-18px)" },
-        },
-        blob: {
-          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
-          "33%": { transform: "translate(30px, -30px) scale(1.08)" },
-          "66%": { transform: "translate(-20px, 20px) scale(0.95)" },
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" },
+        drift: {
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-10px) rotate(0.6deg)" },
         },
       },
       animation: {
-        float: "float 6s ease-in-out infinite",
-        blob: "blob 14s ease-in-out infinite",
-        shimmer: "shimmer 6s ease infinite",
+        drift: "drift 9s ease-in-out infinite",
       },
     },
   },

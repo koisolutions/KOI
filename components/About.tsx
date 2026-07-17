@@ -1,87 +1,77 @@
 import Reveal from "./Reveal";
-import { CheckIcon } from "./icons";
 import { KoiMark } from "./Logo";
 
-const values = [
+const principles = [
   {
     title: "Cercanía real",
-    text: "Hablas directo con quienes desarrollan tu proyecto, sin intermediarios ni tickets perdidos.",
+    text: "Hablas directo con quien trabaja tu proyecto. Sin intermediarios, sin tickets perdidos.",
   },
   {
-    title: "Código de calidad",
-    text: "Escribimos software mantenible y seguro, pensado para crecer contigo con el tiempo.",
+    title: "Pocos proyectos, bien hechos",
+    text: "Preferimos seriedad antes que volumen. Nos comprometemos con lo que sí podemos entregar.",
   },
   {
-    title: "Cumplimos plazos",
-    text: "Trabajamos por entregas claras y avances constantes, para que siempre sepas dónde estamos.",
+    title: "Proceso y trazabilidad",
+    text: "Contrato, portal de cliente y estrategia por escrito. Siempre sabes en qué punto vamos.",
   },
   {
     title: "Enfocados en tu negocio",
-    text: "No vendemos tecnología por moda: proponemos lo que realmente aporta valor a tus objetivos.",
+    text: "No vendemos tecnología de moda: proponemos lo que realmente mueve tus objetivos.",
   },
 ];
 
 export default function About() {
   return (
-    <section id="nosotros" className="py-20 sm:py-28">
+    <section id="estudio" className="py-20 sm:py-28">
       <div className="container-koi">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Texto */}
-          <div>
+        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
+          {/* El porqué */}
+          <div className="max-w-xl">
             <Reveal>
-              <span className="eyebrow">Sobre nosotros</span>
+              <p className="section-label">El estudio</p>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Un equipo pequeño, <span className="text-gradient">grandes resultados</span>
+              <h2 className="mt-5 font-display text-3xl font-semibold tracking-tight text-niebla sm:text-4xl">
+                Un equipo pequeño, cansado del software mal hecho.
               </h2>
             </Reveal>
             <Reveal delay={160}>
-              <div className="mt-5 space-y-4 text-lg leading-relaxed text-slate-300">
+              <div className="mt-6 space-y-4 text-lg leading-relaxed text-junco">
                 <p>
-                  Koi Labs Solutions SpA nace de la pasión de dos desarrolladores
-                  por construir tecnología que resuelve problemas reales. Combinamos
-                  experiencia en desarrollo full stack, seguridad y redes para
-                  entregar productos sólidos y confiables.
+                  KOI nace de una molestia compartida: demasiadas pymes chilenas
+                  fueron decepcionadas por freelancers informales o agencias que
+                  sobre-venden y sub-entregan.
                 </p>
                 <p>
-                  Como el koi que remonta la corriente, creemos en la constancia y en
-                  hacer las cosas bien. Cada proyecto lo tomamos como propio: nos
-                  importa que tu inversión se traduzca en un producto que funcione y
-                  que tu negocio pueda escalar sin miedo.
+                  Somos un estudio pequeño y 100% remoto, por diseño. Preferimos
+                  pocos proyectos hechos con seriedad — con contrato y proceso —
+                  antes que crecer prometiendo de todo.
+                </p>
+                <p className="border-l-2 border-koi/60 pl-4 font-display text-niebla">
+                  Como el koi que remonta la corriente: constancia, dirección y
+                  las cosas bien hechas.
                 </p>
               </div>
             </Reveal>
           </div>
 
-          {/* Tarjeta visual + valores */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Reveal className="sm:col-span-2">
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-ink-600/80 to-ink-800/80 p-8">
-                <KoiMark className="absolute -right-6 -top-6 h-40 w-40 opacity-10" />
-                <p className="font-display text-2xl font-semibold text-white">
-                  &ldquo;Tu socio tecnológico, no solo un proveedor.&rdquo;
-                </p>
-                <p className="mt-3 text-sm text-slate-400">
-                  Nuestra misión: que las pymes y emprendedores accedan a software
-                  de nivel profesional.
-                </p>
-              </div>
-            </Reveal>
-
-            {values.map((v, i) => (
-              <Reveal key={v.title} delay={i * 80}>
-                <div className="card h-full p-6">
-                  <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-water/15 text-water ring-1 ring-water/25">
-                    <CheckIcon className="h-4 w-4" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white">{v.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-400">
-                    {v.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+          {/* Principios */}
+          <div className="relative">
+            <KoiMark className="pointer-events-none absolute -right-4 -top-10 h-32 w-32 opacity-[0.06]" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              {principles.map((p, i) => (
+                <Reveal key={p.title} delay={i * 80}>
+                  <article className="panel h-full p-6">
+                    <h3 className="font-display text-base font-semibold text-niebla">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-junco">
+                      {p.text}
+                    </p>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Logo } from "./Logo";
-import { WhatsAppIcon } from "./icons";
+import ThemeToggle from "./ThemeToggle";
+import { WhatsAppIcon, LockIcon } from "./icons";
 import { whatsappUrl } from "@/lib/site";
 
 const links = [
   { href: "#servicios", label: "Servicios" },
-  { href: "#nosotros", label: "Nosotros" },
   { href: "#proceso", label: "Proceso" },
+  { href: "#estudio", label: "Estudio" },
   { href: "#contacto", label: "Contacto" },
 ];
 
@@ -25,14 +27,14 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-ink/80 backdrop-blur-xl"
+          ? "border-b border-hair/10 bg-sumi/85 backdrop-blur-xl"
           : "border-b border-transparent"
       }`}
     >
       <nav className="container-koi flex h-16 items-center justify-between">
-        <a href="#inicio" aria-label="Koi Labs Solutions — inicio">
+        <a href="#inicio" aria-label="KOI — inicio">
           <Logo />
         </a>
 
@@ -41,11 +43,19 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-slate-300 transition-colors hover:text-white"
+              className="font-mono text-xs uppercase tracking-widest text-junco transition-colors hover:text-niebla"
             >
               {l.label}
             </a>
           ))}
+          <Link
+            href="/acceso"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-junco transition-colors hover:text-niebla"
+          >
+            <LockIcon className="h-3.5 w-3.5" />
+            Acceso
+          </Link>
+          <ThemeToggle />
           <a
             href={whatsappUrl}
             target="_blank"
@@ -53,40 +63,43 @@ export default function Navbar() {
             className="btn-primary !px-5 !py-2.5"
           >
             <WhatsAppIcon className="h-4 w-4" />
-            WhatsApp
+            Conversemos
           </a>
         </div>
 
-        {/* Botón menú móvil */}
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 text-white md:hidden"
-          aria-label="Abrir menú"
+        {/* Controles móvil */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-vidrio text-niebla"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
         >
           <div className="space-y-1.5">
             <span
-              className={`block h-0.5 w-5 bg-white transition-transform ${
+              className={`block h-0.5 w-5 bg-niebla transition-transform ${
                 open ? "translate-y-2 rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-5 bg-white transition-opacity ${
+              className={`block h-0.5 w-5 bg-niebla transition-opacity ${
                 open ? "opacity-0" : ""
               }`}
             />
             <span
-              className={`block h-0.5 w-5 bg-white transition-transform ${
+              className={`block h-0.5 w-5 bg-niebla transition-transform ${
                 open ? "-translate-y-2 -rotate-45" : ""
               }`}
             />
           </div>
-        </button>
+          </button>
+        </div>
       </nav>
 
       {/* Menú móvil desplegable */}
       <div
-        className={`overflow-hidden border-t border-white/10 bg-ink/95 backdrop-blur-xl transition-all duration-300 md:hidden ${
+        className={`overflow-hidden border-t border-hair/10 bg-sumi/95 backdrop-blur-xl transition-all duration-300 md:hidden ${
           open ? "max-h-96" : "max-h-0"
         }`}
       >
@@ -96,11 +109,19 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-3 text-base font-medium text-slate-200 hover:bg-white/5"
+              className="rounded-lg px-3 py-3 font-mono text-sm uppercase tracking-widest text-junco hover:bg-veil/[0.06] hover:text-niebla"
             >
               {l.label}
             </a>
           ))}
+          <Link
+            href="/acceso"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 rounded-lg px-3 py-3 font-mono text-sm uppercase tracking-widest text-junco hover:bg-veil/[0.06] hover:text-niebla"
+          >
+            <LockIcon className="h-4 w-4" />
+            Acceso clientes
+          </Link>
           <a
             href={whatsappUrl}
             target="_blank"
@@ -109,7 +130,7 @@ export default function Navbar() {
             className="btn-primary mt-2 w-full"
           >
             <WhatsAppIcon className="h-4 w-4" />
-            Escríbenos por WhatsApp
+            Conversemos por WhatsApp
           </a>
         </div>
       </div>
